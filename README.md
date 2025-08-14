@@ -1,5 +1,64 @@
 <<<<<<< HEAD
 # Jwt_authentication-system
+🗂 Project Structure and Workflow
+
+The main folders of the project (generally based on Golang/Gin) are:
+
+controllers/
+✨ Handles HTTP endpoints for user registration, login, etc.
+
+models/
+✨ Defines user data structures (e.g., user ID, password).
+
+middleware/
+🔐 Adds JWT verification and authorization checks to ensure “protected routes” work properly.
+
+utils/
+🔑 Contains functions for JWT token creation, password hashing (bcrypt) and verification, and reading environment variables from the .env file.
+
+main.go
+🚀 Contains the setup for routes, server initialization, and start logic.
+
+.env
+Stores environment variables, such as JWT_SECRET_KEY.
+
+✅ Features Implemented
+
+Register (POST /register)
+
+Accepts username and password from the user.
+
+Password is hashed using bcrypt and stored in an emulated server store (likely a map or slice for now).
+
+Login (POST /login)
+
+Verifies the username and password.
+
+If correct, generates a JWT using a utils function and sends it in the response.
+
+Middleware Verification (Protected Routes)
+
+Checks the request header for Authorization: Bearer <token>.
+
+Middleware decodes the JWT and validates it.
+
+If invalid or expired, responds with 401/403 and prevents access to the route.
+
+Password Hashing
+
+Uses bcrypt to encode and verify passwords (handled in utils).
+
+Reading from .env
+
+Loads JWT_SECRET_KEY from the environment in utils.
+
+Additional Notes
+
+Database integration (PostgreSQL/MySQL) could be added later in models or a database folder.
+
+Controllers may also include endpoints like /refresh-token or /logout.
+
+A tests/ folder might contain unit or integration tests.
 learn laravel project
 =======
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
